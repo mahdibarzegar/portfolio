@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Star } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +13,7 @@ interface ProjectCardProps {
   index?: number;
 }
 
-// رنگ گرادیان بر اساس دسته
+// رنگ گرادیان بر اساس دسته (fallback اگر تصویر نداشتیم)
 const categoryGradients: Record<string, string> = {
   web: "from-blue-500 to-cyan-500",
   windows: "from-purple-500 to-pink-500",
@@ -19,8 +21,18 @@ const categoryGradients: Record<string, string> = {
   mobile: "from-green-500 to-emerald-500",
 };
 
+const categoryEmojis: Record<string, string> = {
+  web: "🌐",
+  windows: "🪟",
+  ui: "🎨",
+  mobile: "📱",
+};
+
 export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+  const [imageError, setImageError] = useState(false);
   const gradient = categoryGradients[project.category] || categoryGradients.web;
+  const emoji = categoryEmojis[project.category] || "💼";
+  const hasValidImage = project.image && !imageError;
 
   return (
     <motion.div
@@ -42,33 +54,36 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       )}
 
       {/* Image Container */}
-      <div className="relative aspect-[16/10] overflow-hidden">
-        {/* Gradient Background (placeholder for image) */}
-        <div
-          className={cn(
-            "absolute inset-0 bg-gradient-to-br",
-            gradient,
-            "opacity-90",
-          )}
-        />
-
-        {/* Dot Pattern */}
-        <div className="absolute inset-0 dot-pattern opacity-30" />
-
-        {/* Project Title in Image */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-6">
-            <div className="text-6xl mb-4 opacity-20">
-              {project.category === "web" && "🌐"}
-              {project.category === "windows" && "🪟"}
-              {project.category === "ui" && "🎨"}
-              {project.category === "mobile" && "📱"}
+      <div className="relative aspect-[16/10] overflow-hidden bg-background-secondary">
+        {hasValidImage ? (
+          // تصویر واقعی
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover group-hover:scale-110 transition-transform duration-700"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          // Fallback: گرادیان + آیکون
+          <>
+            <div
+              className={cn(
+                "absolute inset-0 bg-gradient-to-br",
+                gradient,
+                "opacity-90",
+              )}
+            />
+            <div className="absolute inset-0 dot-pattern opacity-30" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-6xl opacity-30">{emoji}</div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+        <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10">
           {project.liveUrl && (
             <motion.a
               href={project.liveUrl}
