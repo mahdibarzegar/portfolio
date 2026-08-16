@@ -17,16 +17,27 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Helper: خواندن تم اولیه از localStorage
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") return "ocean";
+
+  const savedTheme = localStorage.getItem("theme") as Theme | null;
+  if (savedTheme && ["ocean", "sunset", "forest"].includes(savedTheme)) {
+    return savedTheme;
+  }
+  return "ocean";
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("ocean");
   const [mounted, setMounted] = useState(false);
 
+  // فقط یک بار در mount اجرا می‌شود
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme && ["ocean", "sunset", "forest"].includes(savedTheme)) {
-      setThemeState(savedTheme);
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    }
+    const initialTheme = getInitialTheme();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setThemeState(initialTheme);
+    document.documentElement.setAttribute("data-theme", initialTheme);
     setMounted(true);
   }, []);
 
@@ -36,13 +47,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     document.documentElement.setAttribute("data-theme", newTheme);
   };
 
-  if (!mounted) {
-    return <div style={{ visibility: "hidden" }}>{children}</div>;
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
+      <div style={{ visibility: mounted ? "visible" : "hidden" }}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

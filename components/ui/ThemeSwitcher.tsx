@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Palette, Check } from "lucide-react";
-import { useTheme, Theme } from "@/src/components/providers/ThemeProvider";
-import { cn } from "@/src/lib/utils";
+import { useTheme, Theme } from "@/components/providers/ThemeProvider";
+import { cn } from "@/lib/utils";
 
 const themes: { id: Theme; name: string; colors: string[] }[] = [
   {
