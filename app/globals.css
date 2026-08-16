@@ -236,3 +236,31 @@ body {
 [dir="rtl"] .animate-marquee-right {
   animation-name: marquee-left;
 }
+/* ===================================
+   Animated Gradient
+   =================================== */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+/* ===================================
+   Dot Pattern
+   =================================== */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Radial Gradient utility */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
+}

@@ -25,6 +25,7 @@ import {
   SiMysql,
   SiSharp,
 } from "react-icons/si";
+import { ParticlesBackground } from "@/components/ui/ParticlesBackground";
 
 const skills = [
   { name: "React", icon: FaReact, color: "#61DAFB" },
@@ -49,10 +50,7 @@ const skills = [
   { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3" },
 ];
 
-// دو کپی برای انیمیشن بی‌نهایت
 const duplicatedSkills = [...skills, ...skills];
-
-// ردیف دوم - ترتیب متفاوت برای زیبایی
 const skillsReversed = [...skills].reverse();
 const duplicatedSkillsReversed = [...skillsReversed, ...skillsReversed];
 
@@ -67,7 +65,7 @@ interface SkillItemProps {
 
 function SkillItem({ name, icon: Icon, color }: SkillItemProps) {
   return (
-    <div className="flex-shrink-0 flex items-center gap-3 glass px-6 py-4 rounded-2xl min-w-fit hover:scale-105 transition-transform">
+    <div className="flex-shrink-0 flex items-center gap-3 glass px-6 py-4 rounded-2xl min-w-fit hover:scale-105 transition-transform backdrop-blur-xl">
       <Icon className="w-6 h-6 transition-colors" style={{ color: color }} />
       <span className="font-medium whitespace-nowrap">{name}</span>
     </div>
@@ -76,61 +74,72 @@ function SkillItem({ name, icon: Icon, color }: SkillItemProps) {
 
 export function SkillsMarquee() {
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Section Header */}
-      <div className="text-center mb-12">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-sm text-accent font-medium mb-3 tracking-wider uppercase"
-        >
-          Tech Stack
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold"
-        >
-          تکنولوژی‌هایی که با آنها{" "}
-          <span className="text-gradient">کار می‌کنم</span>
-        </motion.h2>
+    <section className="py-24 relative overflow-hidden">
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-0">
+        <ParticlesBackground />
       </div>
 
-      {/* Marquee Container */}
-      <div className="relative space-y-6" dir="ltr">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-background/40 z-[1]" />
 
-        {/* Row 1 - Left direction */}
-        <div className="overflow-hidden">
-          <div className="marquee-container animate-marquee-left">
-            {duplicatedSkills.map((skill, index) => (
-              <SkillItem
-                key={`row1-${skill.name}-${index}`}
-                name={skill.name}
-                icon={skill.icon}
-                color={skill.color}
-              />
-            ))}
-          </div>
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-sm text-accent font-medium mb-3 tracking-wider uppercase"
+          >
+            Tech Stack
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-bold"
+          >
+            تکنولوژی‌هایی که با آنها{" "}
+            <span className="text-gradient">کار می‌کنم</span>
+          </motion.h2>
         </div>
 
-        {/* Row 2 - Right direction */}
-        <div className="overflow-hidden">
-          <div className="marquee-container animate-marquee-right">
-            {duplicatedSkillsReversed.map((skill, index) => (
-              <SkillItem
-                key={`row2-${skill.name}-${index}`}
-                name={skill.name}
-                icon={skill.icon}
-                color={skill.color}
-              />
-            ))}
+        {/* Marquee Container */}
+        <div className="relative space-y-6" dir="ltr">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+          {/* Row 1 */}
+          <div className="overflow-hidden">
+            <div className="marquee-container animate-marquee-left">
+              {duplicatedSkills.map((skill, index) => (
+                <SkillItem
+                  key={`row1-${skill.name}-${index}`}
+                  name={skill.name}
+                  icon={skill.icon}
+                  color={skill.color}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2 */}
+          <div className="overflow-hidden">
+            <div className="marquee-container animate-marquee-right">
+              {duplicatedSkillsReversed.map((skill, index) => (
+                <SkillItem
+                  key={`row2-${skill.name}-${index}`}
+                  name={skill.name}
+                  icon={skill.icon}
+                  color={skill.color}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
