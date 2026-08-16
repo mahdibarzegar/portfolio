@@ -34,3 +34,63 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# 📘 مستند پروژه رزومه شخصی - مهدی برزگر
+
+## 🎯 هدف پروژه
+
+ساخت یک سایت رزومه شخصی حرفه‌ای برای معرفی به عنوان:
+
+- طراح و توسعه‌دهنده وب
+- برنامه‌نویس نرم‌افزارهای ویندوز
+- برای بازار هدف: کارفرمای عمومی (مثل شهر بانه)
+
+## 👤 مشخصات
+
+- **نام:** مهدی برزگر
+- **GitHub:** mahdibarzegar
+- **Repository:** https://github.com/mahdibarzegar/portfolio
+
+## 💻 محیط توسعه
+
+- **سیستم عامل:** Windows
+- **مسیر پروژه:** `D:\FinalProject\portfolio\portfolio`
+- **Node.js:** نصب شده
+- **Git:** نصب شده و متصل به GitHub با SSH Key
+
+---
+
+## 🏗️ Tech Stack
+
+| بخش             | تکنولوژی                               |
+| --------------- | -------------------------------------- |
+| Framework       | Next.js 15 (App Router)                |
+| زبان            | TypeScript                             |
+| Styling         | Tailwind CSS v4                        |
+| Animation       | Framer Motion                          |
+| Icons           | react-icons (Fa, Si) + lucide-react    |
+| Particles       | @tsparticles/react + @tsparticles/slim |
+| Utilities       | clsx + tailwind-merge                  |
+| Font (Persian)  | Vazirmatn                              |
+| Hosting         | Vercel                                 |
+| Version Control | GitHub                                 |
+
+## 📦 پکیج‌های نصب شده
+
+```bash
+npm install framer-motion lucide-react clsx tailwind-merge
+npm install react-icons
+npm install @tsparticles/react@3.0.0 @tsparticles/slim@3.7.1 @tsparticles/engine@3.7.1
+```
+
+### ✅ فاز 5B: Projects Section
+
+- فایل داده `data/projects.ts` (6 پروژه نمونه)
+- کامپوننت ProjectCard با:
+  - Featured badge
+  - گرادیان بر اساس دسته
+  - Hover overlay با 3 دکمه
+- Filter Tabs (همه، طراحی سایت، نرم‌افزار ویندوز، UI/UX، موبایل)
+- Grid Responsive (3-2-1 ستون)
+- انیمیشن ورود کارت‌ها
+- CTA "مشاهده همه پروژه‌ها"

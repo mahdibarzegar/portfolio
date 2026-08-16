@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-
+import { Projects } from "@/components/sections/Projects";
 import { SkillsMarquee } from "@/components/sections/SkillsMarquee";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
@@ -177,18 +177,8 @@ export default function Home() {
       <Services />
 
       {/* Placeholder */}
-      <section id="projects" className="min-h-screen flex items-center">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">نمونه‌کارها</span>
-            </h2>
-            <p className="text-foreground-muted">
-              این بخش در فاز 5B ساخته می‌شود...
-            </p>
-          </div>
-        </Container>
-      </section>
+      {/* Projects Section */}
+      <Projects />
 
       <section id="contact" className="min-h-screen flex items-center">
         <Container>
