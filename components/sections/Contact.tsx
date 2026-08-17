@@ -68,17 +68,40 @@ export function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
-    // فعلاً شبیه‌سازی می‌کنیم. در فاز بعد به Resend وصل می‌شود
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setStatus("success");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+      const data = await response.json();
 
-    setTimeout(() => setStatus("idle"), 3000);
+      if (!response.ok) {
+        throw new Error(data.error || "خطا در ارسال پیام");
+      }
+
+      setStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "خطای ناشناخته");
+      setTimeout(() => {
+        setStatus("idle");
+        setErrorMessage("");
+      }, 5000);
+    }
   };
 
   return (
@@ -316,6 +339,16 @@ export function Contact() {
               >
                 ✅ پیام شما با موفقیت ارسال شد! به‌زودی با شما در تماس خواهم
                 بود.
+              </motion.div>
+            )}
+            {status === "error" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl text-sm text-center"
+              >
+                ❌{" "}
+                {errorMessage || "خطا در ارسال پیام. لطفاً دوباره امتحان کنید."}
               </motion.div>
             )}
           </motion.form>

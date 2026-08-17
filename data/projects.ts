@@ -109,7 +109,7 @@ export const projects: Project[] = [
     image: "/project/new-project.webp",
     technologies: ["Next.js", "TypeScript"],
     featured: true,
-    liveUrl: "https://example.com",
+    liveUrl: "https://amlaknovin.com",
     githubUrl: "https://github.com/...",
     year: 2024,
   },
