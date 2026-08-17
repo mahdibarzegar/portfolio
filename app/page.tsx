@@ -7,7 +7,9 @@ import { Projects } from "@/components/sections/Projects";
 import { SkillsMarquee } from "@/components/sections/SkillsMarquee";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
-
+import { Process } from "@/components/sections/Process";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { Contact } from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
@@ -166,32 +168,23 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
-
       {/* Skills Marquee */}
       <SkillsMarquee />
-
       {/* About Section */}
       <About />
-
       {/* Services Section */}
       <Services />
-
       {/* Placeholder */}
       {/* Projects Section */}
       <Projects />
+      {/* Process Section */}
+      <Process />
 
-      <section id="contact" className="min-h-screen flex items-center">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">تماس با من</span>
-            </h2>
-            <p className="text-foreground-muted">
-              این بخش در فاز 5C ساخته می‌شود...
-            </p>
-          </div>
-        </Container>
-      </section>
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* Contact Section */}
+      <Contact />
     </>
   );
 }
