@@ -83,7 +83,7 @@ npm install react-icons
 npm install @tsparticles/react@3.0.0 @tsparticles/slim@3.7.1 @tsparticles/engine@3.7.1
 ```
 
-### ✅ فاز 5B: Projects Section
+#### ✅ فاز 5B: Projects Section
 
 - فایل داده `data/projects.ts` (6 پروژه نمونه)
 - کامپوننت ProjectCard با:
