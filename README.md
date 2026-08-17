@@ -94,3 +94,30 @@ npm install @tsparticles/react@3.0.0 @tsparticles/slim@3.7.1 @tsparticles/engine
 - Grid Responsive (3-2-1 ستون)
 - انیمیشن ورود کارت‌ها
 - CTA "مشاهده همه پروژه‌ها"
+
+### ✅ فاز 6: اتصال فرم به Resend
+
+- پکیج `resend` نصب شد
+- فایل `.env.local` با RESEND_API_KEY, CONTACT_EMAIL, FROM_EMAIL
+- API Route: `app/api/contact/route.ts`
+  - Rate limiting (3 request/hour per IP)
+  - Server-side validation
+  - Resend integration
+  - قالب HTML زیبا با گرادیان
+- بروزرسانی handleSubmit در Contact section
+- نمایش پیام خطا
+- Environment Variables در Vercel ست شد
+
+## ✅ فاز 7: صفحه All Projects (`/projects`)
+
+- `app/projects/page.tsx` (Server Component + Metadata)
+- `app/projects/AllProjectsClient.tsx` (Client Component)
+- ویژگی‌ها:
+  - Search real-time (title, description, tech, category)
+  - Category filter (5 گزینه)
+  - Sort (newest, oldest, featured)
+  - Clear all filters
+  - Empty state زیبا
+  - Breadcrumb navigation
+  - Back to Home CTA
+- بروزرسانی لینک‌های Header و Footer به `/projects`
