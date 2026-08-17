@@ -118,7 +118,7 @@ export function Projects() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center gap-2 glass px-8 py-4 rounded-full font-medium hover:bg-card-hover transition-colors backdrop-blur-xl"
+              className="group inline-flex items-center gap-2 glass px-8 py-4  rounded-full font-medium hover:bg-card-hover transition-colors backdrop-blur-xl"
             >
               مشاهده همه پروژه‌ها
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

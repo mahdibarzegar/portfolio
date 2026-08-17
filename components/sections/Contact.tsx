@@ -10,15 +10,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: "ایمیل",
-    value: "your@email.com",
-    href: "mailto:your@email.com",
+    value: "Barzegarmahdi361@gmail.com",
+    href: "mailto:Barzegarmahdi361@gmail.com",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     icon: Phone,
     label: "شماره تماس",
-    value: "0912-345-6789",
-    href: "tel:+989123456789",
+    value: "0914-795-6200",
+    href: "tel:+989147956200",
     gradient: "from-green-500 to-emerald-500",
   },
   {
@@ -34,19 +34,19 @@ const socialLinks = [
   {
     icon: FaTelegram,
     label: "Telegram",
-    href: "https://t.me/yourusername",
+    href: "https://t.me/@Mrastin361",
     color: "hover:text-[#0088cc]",
   },
   {
     icon: FaWhatsapp,
     label: "WhatsApp",
-    href: "https://wa.me/989123456789",
+    href: "https://wa.me/989147956200",
     color: "hover:text-[#25D366]",
   },
   {
     icon: FaInstagram,
     label: "Instagram",
-    href: "https://instagram.com/yourusername",
+    href: "https://instagram.com/barzegarmahdi361",
     color: "hover:text-[#E4405F]",
   },
 ];
