@@ -121,3 +121,4 @@ npm install @tsparticles/react@3.0.0 @tsparticles/slim@3.7.1 @tsparticles/engine
   - Breadcrumb navigation
   - Back to Home CTA
 - بروزرسانی لینک‌های Header و Footer به `/projects`
+- page

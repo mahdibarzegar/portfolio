@@ -10,7 +10,6 @@ import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
-
 export default function Home() {
   return (
     <>
@@ -19,35 +18,26 @@ export default function Home() {
         id="home"
         className="relative min-h-screen overflow-hidden flex items-center pt-20"
       >
-        {/* ============================================ */}
-        {/* پس‌زمینه ویدیویی با ویدیوی اسب در حال تاخت */}
-        {/* ============================================ */}
+        {/* Gradient Mesh Background */}
         <div className="absolute inset-0 z-0">
-          {/* ویدیوی پس‌زمینه */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-            {/* متن جایگزین برای مرورگرهای قدیمی */}
-            Your browser does not support the video tag.
-          </video>
+          {/* Main Gradient Blob 1 */}
+          <div className="absolute top-[10%] left-[15%] w-[500px] h-[500px] bg-accent rounded-full mix-blend-normal filter blur-[100px] opacity-30 animate-blob" />
 
-          {/* لایه تیره‌تر برای خوانایی کامل متن */}
-          <div className="absolute inset-0 bg-black/60" />
+          {/* Main Gradient Blob 2 */}
+          <div className="absolute top-[20%] right-[15%] w-[500px] h-[500px] bg-secondary rounded-full mix-blend-normal filter blur-[100px] opacity-30 animate-blob animation-delay-2000" />
 
-          {/* لایه محوکننده لبه‌ها (Vignette) - حفظ افکت قبلی */}
-          <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background opacity-80" />
+          {/* Main Gradient Blob 3 */}
+          <div
+            className="absolute bottom-[10%] left-[35%] w-[500px] h-[500px] rounded-full mix-blend-normal filter blur-[100px] opacity-20 animate-blob animation-delay-4000"
+            style={{ background: "var(--gradient-via)" }}
+          />
 
-          {/* الگوی نقطه‌ای (اختیاری - برای حفظ یکدستی با قبل) */}
-          <div className="absolute inset-0 dot-pattern opacity-10" />
+          {/* Dot Pattern Overlay */}
+          <div className="absolute inset-0 dot-pattern opacity-40" />
+
+          {/* Vignette - تیرگی لبه‌ها */}
+          <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background" />
         </div>
-        {/* ============================================ */}
-        {/* پایان بخش پس‌زمینه ویدیویی */}
-        {/* ============================================ */}
 
         <Container className="relative z-10">
           <motion.div
@@ -56,7 +46,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-4xl mx-auto"
           >
-            {/* Badge - با پیام جدید و هماهنگ با تم اسب */}
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -68,23 +58,23 @@ export default function Home() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
               </span>
               <span className="text-sm text-foreground-muted">
-                🚀 پیش به سوی تحول دیجیتال
+                آماده همکاری در پروژه‌های جدید
               </span>
             </motion.div>
 
-            {/* Title - جدید با تم تغییر و پیشرفت */}
+            {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.4] md:leading-[1.3]"
             >
-              پیش به سوی تغییر در
+              تجربه‌های دیجیتال می‌سازم
               <br />
-              <span className="text-gradient">کسب و کار شما</span>
+              <span className="text-gradient">که می‌درخشند</span>
             </motion.h1>
 
-            {/* Subtitle - با لحن قدرتمند و مشاوره‌ای */}
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -93,21 +83,14 @@ export default function Home() {
             >
               من{" "}
               <span className="text-foreground font-semibold">مهدی برزگر</span>{" "}
-              هستم. با{" "}
-              <span className="text-accent font-medium">
-                طراحی سایت‌های مدرن
-              </span>{" "}
-              و{" "}
-              <span className="text-accent font-medium">
-                توسعه نرم‌افزارهای ویندوز
-              </span>
-              ،
+              هستم. طراح و توسعه‌دهنده وب و نرم‌افزار.
               <br />
-              ایده‌های شما را به ابزاری قدرتمند برای رشد و تحول کسب‌وکارتان
-              تبدیل می‌کنم.
+              <span className="text-accent">
+                ایده‌های شما را به واقعیت تبدیل می‌کنم.
+              </span>
             </motion.p>
 
-            {/* CTA Buttons - با متن‌های اقدام‌محورتر */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -115,26 +98,26 @@ export default function Home() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <motion.a
-                href="#contact"
+                href="#projects"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group flex items-center gap-2 bg-accent text-white px-7 py-3.5 rounded-full font-medium shadow-lg glow hover:bg-accent-hover transition-colors"
               >
-                درخواست مشاوره
+                مشاهده نمونه‌کارها
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               </motion.a>
 
               <motion.a
-                href="/projects"
+                href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="glass px-7 py-3.5 rounded-full font-medium hover:bg-card-hover transition-colors backdrop-blur-xl"
               >
-                نمونه‌کارهای من
+                تماس با من
               </motion.a>
             </motion.div>
 
-            {/* Stats - با اعداد واقعی‌تر (قابل تغییر) */}
+            {/* Stats */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -143,7 +126,7 @@ export default function Home() {
             >
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-gradient">
-                  +۵۰
+                  +50
                 </div>
                 <div className="text-sm text-foreground-muted mt-2">
                   پروژه موفق
@@ -151,7 +134,7 @@ export default function Home() {
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-gradient">
-                  +۵
+                  +5
                 </div>
                 <div className="text-sm text-foreground-muted mt-2">
                   سال تجربه
@@ -159,7 +142,7 @@ export default function Home() {
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-gradient">
-                  ۱۰۰٪
+                  100%
                 </div>
                 <div className="text-sm text-foreground-muted mt-2">
                   رضایت مشتری
@@ -169,7 +152,7 @@ export default function Home() {
           </motion.div>
         </Container>
 
-        {/* Scroll Indicator - بدون تغییر */}
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -185,14 +168,22 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Sections بعدی - بدون هیچ تغییری */}
+      {/* Skills Marquee */}
       <SkillsMarquee />
+      {/* About Section */}
       <About />
+      {/* Services Section */}
       <Services />
+      {/* Placeholder */}
+      {/* Projects Section */}
       <Projects />
+      {/* Process Section */}
       <Process />
+
+      {/* Testimonials Section */}
       <Testimonials />
+
+      {/* Contact Section */}
       <Contact />
     </>
   );
